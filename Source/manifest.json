@@ -1,0 +1,41 @@
+{
+  "Actions": [
+    {
+      "Icon": "pluginIcon",
+      "Name": "Countdown Timer",
+      "States": [
+        {
+          "Image": "stopped",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        },
+        {
+          "Image": "running",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Countdown Timer with Stop/Start",
+      "UUID": "com.baptiewright.countdown.action"
+    }
+  ],
+  "Author": "Baptiewright Designs",
+  "CodePath": "index.html",
+  "Description": "Countdown Timer with Adjustable Increment",
+  "Name": "Countdown Timer",
+  "Icon": "pluginIcon",
+  "URL": "https://www.elgato.com/gaming/stream-deck",
+  "PropertyInspectorPath": "countdown_pi.html",
+  "Version": "0.1",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ]
+}

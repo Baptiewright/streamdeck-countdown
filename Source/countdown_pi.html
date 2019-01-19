@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>com.baptiewright.countdown PI</title>
+    <link rel="stylesheet" href="sdpi.css">
+    <script src="common.js"></script>
+
+    <script>
+        String.prototype.toMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+	if ((hours == 1) && (minutes == 0))
+	{
+		minutes = 60;
+	}
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return minutes+':'+seconds;
+}
+
+    </script>
+
+</head>
+
+<body>
+    <!-- <div class="sdpi-wrapper">
+        <div class="sdpi-item" id="select_single">
+    <div class="sdpi-item-label">Increment (m)</div>
+    <select class="sdpi-item-value select" id="increment" onchange="sendValueToPlugin(event.target.value, 'increment')">
+       <option value="60">1</option>
+       <option value="300">5</option>
+       <option value="600">10</option>
+    </select>
+</div>
+    </div> -->
+
+    <script>
+        var pluginAction = "com.baptiewright.countdown.action",
+            uuid = '';
+
+        if ($SD) {
+            $SD.on('connected', function (jsonObj) {
+                uuid = jsonObj['uuid'];
+                var payload = {};
+                payload["pidisplayed"] = true;
+                payload["event"] = "sendToPlugin";
+                $SD.api.sendToPlugin(uuid, pluginAction, payload);
+                });
+            $SD.on('sendToPropertyInspector', function (jsonObj)   {
+                uuid = jsonObj['uuid'];
+                
+                console.log('incoming settings from plugin', jsonObj);
+                var payload = jsonObj.payload;
+                if (payload.error) {
+                    // Show Error
+                    // You can use this to show any errors and short circuit the rest of the refresh code
+                    return;
+                }
+
+                var increment = document.getElementById('increment');
+                increment.value = payload.selectedValue;
+
+            });
+        }
+        /** you can also use ES6 syntax like so:
+        *
+        *   if ($SD) $SD.on('connected', (jsonObj) => { uuid=jsonObj.uuid }));
+        *    
+        */
+
+        function sendValueToPlugin(value, param) {
+
+            console.log("SENDING VALUE TO PLUGIN: ", value, uuid, pluginAction);
+
+            if ($SD && $SD.connection) {
+                var payload = {};
+                if (param) {
+                    payload[param] = value;
+                }
+                payload["event"] = "sendToPlugin";
+                $SD.api.sendToPlugin(uuid, pluginAction, payload);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
