@@ -1,4 +1,4 @@
-#V0.2 Release
+# V0.2 Release
 Alarm sound now works!  To change the alarm sound, replace alarm.mp3 in %APPDATA%\Elgato\StreamDeck\Plugins\com.baptiewright.countdown.sdPlugin
 
 Countdown Timer for Elgato Stream Deck written in Javascript
