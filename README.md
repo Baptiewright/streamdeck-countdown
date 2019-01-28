@@ -1,6 +1,9 @@
+#V0.2 Release
+Alarm sound now works!  To change the alarm sound, replace alarm.mp3 in %APPDATA%\Elgato\StreamDeck\Plugins\com.baptiewright.countdown.sdPlugin
+
 Countdown Timer for Elgato Stream Deck written in Javascript
 # Description
-Simple Countdown Timer - Set to 5 minutes by default, configurable increment (1, 5, 10 minutes) and alarm sound coming in a later release.  Source based on Elgato sample plugins (numberdisplay and analogclock).
+Simple Countdown Timer - Set to 5 minutes by default, configurable increment (1, 5, 10 minutes) coming in a later release.  Source based on Elgato sample plugins (numberdisplay and analogclock).
 
 # Function
 * Press once to start timer.
