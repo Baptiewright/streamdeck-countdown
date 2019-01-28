@@ -12,7 +12,6 @@
 		var websocket = null;
 		var pluginUUID = null;
 		var settingsCache = {};
-		var myAlarm = new Audio('alarm.mp3');
 
 		var DestinationEnum = Object.freeze({ "HARDWARE_AND_SOFTWARE": 0, "HARDWARE_ONLY": 1, "SOFTWARE_ONLY": 2 })
 
@@ -30,6 +29,7 @@
 			var self = this;
 			var thisTimer = 0;
 			var titleFlash = false;
+			var alarmPlayed = false;
 			console.log("toggleTimer "+this.currentState);
 			if (this.currentState == 0){
 				//console.log('setInterval '+this.countdownTimer);
@@ -45,6 +45,11 @@
 					}
 					//console.log('timerLoop - '+self.countdownTimer);
 					if (self.alarm == true){
+						if (alarmPlayed == false || ca.myAlarm.ended == true){
+								//console.log('play alarm sound');
+								ca.myAlarm.play();
+								alarmPlayed = true;
+							}
 						if (titleFlash == true)
 						{
 							titleFlash = false;
@@ -88,6 +93,7 @@
 				if (myTimer.alarm == true)
 				{
 					console.log("Alarm Canceled");
+					this.myAlarm.pause();
 					myTimer.alarm = false;
 					myTimer.countdownTimer = increment;
 					myTimer.keyPressCounter = 0;
@@ -135,6 +141,7 @@
 			onWillAppear: function (context, settings, coordinates) {
 				var increment = this.GetSetting(settings,'increment',300);
 				var self = this;
+				this.myAlarm = new Audio('alarm.mp3');
 				if (typeof this.cache['timer',context] === 'undefined')
 				{
 					var myTimer = new timerObj(context,self);

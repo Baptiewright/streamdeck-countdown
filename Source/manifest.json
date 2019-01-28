@@ -22,12 +22,12 @@
   ],
   "Author": "Baptiewright Designs",
   "CodePath": "index.html",
-  "Description": "Countdown Timer with Adjustable Increment",
+  "Description": "Countdown Timer with Alarm Sound",
   "Name": "Countdown Timer",
   "Icon": "pluginIcon",
   "URL": "http://www.baptiewright.com",
   "PropertyInspectorPath": "countdown_pi.html",
-  "Version": "0.1",
+  "Version": "0.2",
   "OS": [
     {
       "Platform": "mac",
