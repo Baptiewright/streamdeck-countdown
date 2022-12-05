@@ -1,3 +1,7 @@
+# V0.3 Release
+Updated plugin to work with new StreamDeck v6 SDK
+
+
 # V0.2 Release
 Alarm sound now works!  To change the alarm sound, replace alarm.mp3 in %APPDATA%\Elgato\StreamDeck\Plugins\com.baptiewright.countdown.sdPlugin
 
